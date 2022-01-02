@@ -5,14 +5,14 @@ import java.net.*;
 public class ClientHandler extends Thread {
 	Thread t;
 	private final Socket cSocket;
-	static Hashtable<String,Socket> chatresi;
-	static Hashtable<String,Socket> resi;
+	static HashMap<String,Socket> chatresi;
+	static HashMap<String,Socket> resi;
 
 	public ClientHandler(Socket _cSocket, MainServer _parentServer){
 		t = null;
 		cSocket = _cSocket;
-		resi = new Hashtable<>();
-		chatresi = new Hashtable<>();
+		resi = new HashMap<>();
+		chatresi = new HashMap<>();
 	}
 
 	public void start() {		
@@ -157,6 +157,8 @@ public class ClientHandler extends Thread {
 	}
 
 
+	 
+
 	private static void printhelp(String name) throws IOException {
 
 		OutputStream out = resi.get(name).getOutputStream();
@@ -171,7 +173,7 @@ public class ClientHandler extends Thread {
 
 
 	//find port, ip at resiServer
-	private  boolean findpip(int port, String address,String name,Hashtable<String,Socket> resi) throws IOException {
+	private  boolean findpip(int port, String address,String name, HashMap<String,Socket> resi) throws IOException {
 		Set<String> keys = resi.keySet();
 
 		OutputStream ops;
@@ -194,7 +196,7 @@ public class ClientHandler extends Thread {
 		}
 		return flag;
 	}
-	private void showUsers(OutputStream out,Hashtable<String,Socket> gg) throws IOException{
+	private void showUsers(OutputStream out,HashMap<String,Socket> gg) throws IOException{
 
 		if(!gg.isEmpty()) {
 			Set<String> keys = gg.keySet();
