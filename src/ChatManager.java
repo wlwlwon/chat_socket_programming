@@ -9,7 +9,7 @@ public class ChatManager extends Thread {
 	HashMap<String,Socket> resi;
 	String message;
 
-	public ChatManager(String[] _usernames,String message,Hashtable<String,Socket> resi) throws IOException {
+	public ChatManager(String[] _usernames,String message,HashMap<String,Socket> resi) throws IOException {
 		t= null;
 		usernames = _usernames;	
 		this.message =message; 
